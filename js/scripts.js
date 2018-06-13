@@ -33,6 +33,7 @@ $(document).ready(function() {
   var diceToString= ['one', 'two', 'three', 'four', 'five', 'six']
 
   var diceString;
+  var tempScore = 0
 
   // var diceString = diceToString[playerOne.currentRolls() -1]
 
@@ -43,11 +44,21 @@ $(document).ready(function() {
 
     $("#hold").attr("disabled", false);
 
+    // player one
+
     if(playerTurn === 1) {
       diceString = diceToString[playerOne.rollDice() - 1];
+      if (tempScore === 0) {
+        tempScore = playerOne.score;
+      }
+      console.log("initial tempScore: " + tempScore);
+      tempScore += playerOne.currentRolls[playerOne.currentRolls.length - 1];
+      console.log("+roll tempScore: " + tempScore);
       console.log(playerOne.currentRolls);
       console.log(diceString);
+
       if(playerOne.currentRolls[playerOne.currentRolls.length - 1] === 1) {
+        tempScore = 0;
         console.log("rolled a '1'");
         console.log("before wipe: " + playerOne.currentRolls);
         playerOne.currentRolls = [];
@@ -64,18 +75,28 @@ $(document).ready(function() {
         console.log("playerTurn currently: " + playerTurn);
       }
 
-      if (playerOne.score >= 20) {
+      if (tempScore >= 20) {
         console.log("Player One Wins");
         $("#hold").attr("disabled", true);
         $("#roll").attr("disabled", true);
       }
 
     }
+
+    // player two's mirror
+
     else {
       diceString = diceToString[playerTwo.rollDice() - 1];
+      if(tempScore === 0) {
+        tempScore = playerTwo.score;
+      }
+      console.log("initial tempScore: " + tempScore);
+      tempScore += playerTwo.currentRolls[playerTwo.currentRolls.length -1];
+      console.log("+roll tempScore: " + tempScore);
       console.log(playerTwo.currentRolls);
 
       if(playerTwo.currentRolls[playerTwo.currentRolls.length - 1] === 1) {
+          tempScore = 0;
           console.log("rolled a '1'");
           console.log("before wipe: " + playerTwo.currentRolls);
           playerTwo.currentRolls = [];
@@ -92,7 +113,7 @@ $(document).ready(function() {
           console.log("playerTurn currently: " + playerTurn);
       }
 
-      if (playerTwo.score >= 20) {
+      if (tempScore >= 20) {
         console.log("Player Two Wins");
         $("#hold").attr("disabled", true);
         $("#roll").attr("disabled", true);
@@ -105,6 +126,7 @@ $(document).ready(function() {
   });
 
   $("#hold").click(function() {
+    tempScore = 0;
     $("#hold").attr("disabled", true);
     if (playerTurn === 1) {
       playerOne.hold()
