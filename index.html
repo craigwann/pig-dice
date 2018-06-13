@@ -24,24 +24,29 @@
   <body>
     <div class="container">
       <div class="row">
-        <div id="dice" class="col-3 mx-auto">
+        <div id="dice" class="col">
           <i class='fas fa-dice-one fa-10x'></i>
-
 
         </div>
     </div>
     <div class="row">
-      <div class="col-3 mx-auto">
+      <div class="col-3 mx-auto" id="buttons">
         <button id="roll" type="button" class="btn btn-info">Roll</button>
-        <button id="hold" type="button" class="btn btn-success">Hold</button>
+        <button id="hold" type="button" class="btn btn-danger">Hold</button>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <p>test</p>
+    <div class="row mt-3">
+      <div class="col-3 ml-auto">
+        <div id="playerOneTurn" class="card card-body bg-light">
+            <p>Player One Score: <span id="playerOneScore"></span></p>
+            <p>Rolls: <span id="playerOneRolls"></span></p>
+        </div>
       </div>
-      <div class="col">
-        <p>test</p>
+      <div class="col-3 mr-auto">
+        <div id="playerTwoTurn" class="card card-body bg-light">
+          <p>Player Two Score: <span id="playerTwoScore"></span></p>
+          <p>Rolls: <span id="playerTwoRolls"></span></p>
+        </div>
       </div>
     </div>
 

@@ -1,8 +1,33 @@
-#dice {
+/*html * {
+  outline: 1px dotted gray;
+}*/
+
+#dice i {
   color: tomato;
 }
 
-.fa-dice-six {
+#dice {
+  text-align: center;
+}
+
+
+#buttons {
+  text-align: center;
+}
+
+#playerOneTurn i, #playerTwoTurn i {
+  color: black;
+}
+
+.btn-danger {
+  background: tomato !important;
+}
+
+.bg-success {
+  background: lightblue !important;
+}
+
+/*.fa-dice-six {
   margin-top: 10px;
   margin-bottom: -10px;
-}
+}*/
